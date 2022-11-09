@@ -11,9 +11,12 @@ export default createReducer(initialState, (builder) => {
   builder.addCase("UPDATE_NAME", (state, action) => {
     state.Name = action.payload;
   });
-  builder.addCase(locationAge, (state, action) => {
+
+  //location.type or location   => same
+  builder.addCase(locationAge.type, (state, action) => {
     state.Age = action.payload;
   });
+  //locationCurrent or locationCurrent.type   => same
   builder.addCase(locationCurrent, (state, action) => {
     state.location = action.payload;
   });
