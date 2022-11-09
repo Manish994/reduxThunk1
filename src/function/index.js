@@ -10,5 +10,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
 const locationCurrent = createAction("UPDATE_LOCATION");
+const locationAge = createAction("UPDATE_AGE");
 
-export { locationCurrent };
+export { locationCurrent, locationAge };
