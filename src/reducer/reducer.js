@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+import { locationCurrent } from "../function";
 
 const initialState = {
   Name: "Abinash",
@@ -13,7 +14,7 @@ export default createReducer(initialState, (builder) => {
   builder.addCase("UPDATE_AGE", (state, action) => {
     state.Age = action.payload;
   });
-  builder.addCase("UPDATE_LOCATION", (state, action) => {
+  builder.addCase(locationCurrent, (state, action) => {
     state.location = action.payload;
   });
 });
