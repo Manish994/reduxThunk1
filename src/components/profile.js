@@ -17,8 +17,8 @@ const Profile = () => {
     dispatch({ type: "UPDATE_AGE", payload: 19 });
   }
 
-  function UpdateLocation() {
-    let dipatchState = locationCurrent();
+  function UpdateLocation(status) {
+    let dipatchState = locationCurrent(status);
     dispatch(dipatchState);
   }
   return (
@@ -51,7 +51,7 @@ const Profile = () => {
         <button
           onClick={(e) => {
             e.preventDefault();
-            UpdateLocation();
+            UpdateLocation("bangladesh");
           }}
         >
           UpdateLocation
