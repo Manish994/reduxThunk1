@@ -15,5 +15,13 @@ import { createAction } from "@reduxjs/toolkit";
 
 const locationCurrent = createAction("UPDATE_LOCATION");
 const locationAge = createAction("UPDATE_AGE");
+const fetchName = () => {
+  return async (dispatch) => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    debugger;
+    const result = await res.json();
+    dispatch({ type: "UPDATE_NAME", payload: result[0].name });
+  };
+};
 
-export { locationCurrent, locationAge };
+export { locationCurrent, locationAge, fetchName };
