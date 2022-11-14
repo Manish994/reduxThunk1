@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { locationCurrent, fetchName } from "../function";
+import { update_Name, update_Age, update_location } from "../reducer/reducer";
 
 const Profile = () => {
   const { Name, Age, location } = useSelector((state) => {
@@ -11,16 +12,19 @@ const Profile = () => {
 
   function handleButton() {
     // dispatch({ type: "UPDATE_NAME", payload: "Asim" });
-    dispatch(fetchName());
+    // dispatch(fetchName());
+    dispatch(update_Name("Manish Pokhrel"));
   }
 
   function handleAge() {
-    dispatch({ type: "UPDATE_AGE", payload: 19 });
+    // dispatch({ type: "UPDATE_AGE", payload: 19 });
+    dispatch(update_Age(56));
   }
 
   function UpdateLocation(status) {
-    let dipatchState = locationCurrent(status);
-    dispatch(dipatchState);
+    // let dipatchState = locationCurrent(status);
+    // dispatch(dipatchState);
+    dispatch(update_location(status));
   }
   return (
     <div style={{ marginTop: "20px", paddingRight: "20px" }}>
@@ -52,7 +56,7 @@ const Profile = () => {
         <button
           onClick={(e) => {
             e.preventDefault();
-            UpdateLocation("bangladesh");
+            UpdateLocation("Germany");
           }}
         >
           UpdateLocation
