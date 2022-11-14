@@ -1,7 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { locationCurrent, fetchName } from "../function";
-import { update_Name, update_Age, update_location } from "../reducer/reducer";
+import {
+  update_Name,
+  update_Age,
+  update_location,
+  fetchUserName,
+} from "../reducer/reducer";
 
 const Profile = () => {
   const { Name, Age, location } = useSelector((state) => {
@@ -13,7 +18,8 @@ const Profile = () => {
   function handleButton() {
     // dispatch({ type: "UPDATE_NAME", payload: "Asim" });
     // dispatch(fetchName());
-    dispatch(update_Name("Manish Pokhrel"));
+    // dispatch(update_Name("Manish Pokhrel"));
+    dispatch(fetchUserName());
   }
 
   function handleAge() {

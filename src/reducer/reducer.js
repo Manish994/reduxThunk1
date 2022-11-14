@@ -1,4 +1,4 @@
-import { createReducer, createSlice } from "@reduxjs/toolkit";
+import { createReducer, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { locationCurrent, locationAge } from "../function";
 
 const initialState = {
@@ -6,6 +6,15 @@ const initialState = {
   Age: 26,
   location: "Dubai",
 };
+
+export const fetchUserName = createAsyncThunk(
+  "fetchName/jsonplaceholder",
+  async () => {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    const res = await response.json();
+    return res[Math.floor(Math.random() * 10)].name;
+  }
+);
 
 //create slice does not required { type: "UPDATE_AGE", payload: 19 } to be written.
 // it creates by itself
@@ -21,6 +30,18 @@ const userReducer = createSlice({
     },
     update_location(state, action) {
       state.location = action.payload;
+    },
+  },
+
+  extraReducers: {
+    [fetchUserName.fulfilled]: (state, action) => {
+      state.Name = action.payload;
+    },
+    [fetchUserName.pending]: (state, action) => {
+      state.Name = "Loading !!!!";
+    },
+    [fetchUserName.rejected]: (state, action) => {
+      state.Name = "Try Again !!!";
     },
   },
 });
